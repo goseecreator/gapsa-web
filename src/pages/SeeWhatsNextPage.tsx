@@ -40,7 +40,7 @@ import {
               alignItems="center"
             >
               <Box
-                bgImage={`url(${project.image})`}
+                bgImage={`url(${project.images})`}
                 bgSize="cover"
                 bgPosition="center"
                 borderRadius="lg"
@@ -51,7 +51,7 @@ import {
                 {project.title}
               </Heading>
               <Text mb={4} color="gray.600">
-                {project.description}
+                {project.shortDescription}
               </Text>
               <Button as="a" href={`/projects/${project.slug}`} variant="outline" colorScheme="blue">
                 View Project

@@ -1,52 +1,76 @@
-// src/pages/PastProjectsPage.tsx
+import { useParams } from "react-router-dom";
+import {
+  Box,
+  Heading,
+  Text,
+  Image,
+  SimpleGrid,
+  Alert,
+  AlertIcon,
+  Stack,
+} from "@chakra-ui/react";
+import { projects } from "../data/projects";
 
-import { Box, Heading, SimpleGrid, Text, Button, useColorModeValue } from "@chakra-ui/react";
-import { projects } from "../data/projects"; // Assuming you're importing your data here
+export default function ProjectDetailPage() {
+  const { slug } = useParams();
+  const project = projects.find(p => p.slug === slug);
 
-const PastProjectsPage = () => {
-  const pastProjects = projects.filter((p) => p.category === "past");
-  const tileBg = useColorModeValue("gray.100", "gray.700");
+  if (!project) {
+    return (
+      <Alert status="error" mt={10}>
+        <AlertIcon />
+        Project not found.
+      </Alert>
+    );
+  }
 
   return (
-    <Box px={6} py={12}>
-      <Heading textAlign="center" size="2xl" mb={8}>
-        Past Projects
-      </Heading>
+    <Box px={{ base: 4, md: 10 }} py={10}>
+      <Heading mb={4}>{project.title}</Heading>
 
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
-        {pastProjects.map((project) => (
-          <Box
-            key={project.slug}
-            bg={tileBg}
-            p={6}
-            borderRadius="lg"
-            boxShadow="lg"
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-          >
-            <Box
-              bgImage={`url(${project.image})`}
-              bgSize="cover"
-              bgPosition="center"
-              borderRadius="lg"
-              height="200px"
-              width="100%"
-            />
-            <Heading size="md" mt={4} mb={2}>
-              {project.title}
-            </Heading>
-            <Text mb={4} color="gray.600">
-              {project.description}
-            </Text>
-            <Button as="a" href={`/projects/${project.slug}`} variant="outline" colorScheme="blue">
-              View Project
-            </Button>
-          </Box>
+      <Text fontSize="lg" mb={6} color="gray.700">
+        {project.fullDescription}
+      </Text>
+
+      {/* Project Image Gallery */}
+      <Stack direction={{ base: "column", md: "row" }} spacing={4} wrap="wrap" mb={10}>
+        {project.images.map((img, index) => (
+          <Image
+            key={index}
+            src={img}
+            alt={`${project.title} image ${index + 1}`}
+            borderRadius="md"
+            objectFit="cover"
+            maxW={{ base: "100%", md: "48%" }}
+            maxH="300px"
+          />
         ))}
-      </SimpleGrid>
+      </Stack>
+
+      {/* Optional Snippets */}
+      {project.snippets && project.snippets.length > 0 && (
+        <Box mt={10}>
+          <Heading size="md" mb={4}>
+            Related Snippets
+          </Heading>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+            {project.snippets.map(snippet => (
+              <Box key={snippet.id} bg="gray.50" p={4} borderRadius="md">
+                <Heading size="sm" mb={2}>{snippet.title}</Heading>
+                <Box
+                  as="iframe"
+                  src={snippet.videoUrl}
+                  width="100%"
+                  height="200"
+                  allowFullScreen
+                  title={snippet.title}
+                  style={{ borderRadius: "8px" }}
+                />
+              </Box>
+            ))}
+          </SimpleGrid>
+        </Box>
+      )}
     </Box>
   );
-};
-
-export default PastProjectsPage; // Ensure default export here
+}

@@ -1,100 +1,103 @@
-
 import {
   Box,
-  Flex,
-  VStack,
-  IconButton,
-  useDisclosure,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  Link,
+  Heading,
   Text,
+  Button,
+  UnorderedList,
+  ListItem,
+  Stack,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
-import {
-  FaHome,
-  FaInfoCircle,
-  FaEnvelope,
-  FaHeart,
-} from "react-icons/fa";
-import { MdDashboardCustomize } from "react-icons/md";
-import { BsCollectionPlay } from "react-icons/bs";
-import { Outlet, Link as RouterLink } from "react-router-dom";
-import MobileFooter from "../components/MobileFooter";
+import { motion } from "framer-motion";
 
-const sidebarLinks = [
-  { label: "Home", path: "/", icon: <FaHome /> },
-  { label: "About", path: "/about", icon: <FaInfoCircle /> },
-  { label: "Portal", path: "/portal", icon: <MdDashboardCustomize /> },
-  { label: "Snippets", path: "/snippets", icon: <BsCollectionPlay /> },
-  { label: "Contact", path: "/contact", icon: <FaEnvelope /> },
-  { label: "Donate", path: "/donate", icon: <FaHeart /> },
-];
+const MotionBox = motion(Box);
 
-export default function Layout() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+export default function PeaceTournamentDetail() {
+  const bg = useColorModeValue("white", "gray.800");
+  const text = useColorModeValue("gray.800", "gray.100");
+  const heading = useColorModeValue("brand.blue.600", "brand.blue.300");
 
   return (
-    <Flex direction="column" minH="100vh">
-      {/* Header */}
-      <Flex
-        as="header"
-        bg="gray.800"
-        color="white"
-        p={4}
-        justify="space-between"
-        align="center"
-      >
-        <IconButton
-          icon={<HamburgerIcon boxSize={6} />}
-          onClick={onOpen}
-          aria-label="Open Menu"
-          bg="whiteAlpha.200"
-          _hover={{ bg: "whiteAlpha.300" }}
-          borderRadius="full"
-          boxShadow="md"
-          size="lg"
-          color="white"
-        />
-        <Text fontSize="xl" fontWeight="bold">
-          GAPSA
-        </Text>
-      </Flex>
-
-      {/* Sidebar Drawer */}
-      <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay />
-        <DrawerContent bg="gray.900" color="white">
-          <DrawerCloseButton />
-          <VStack p={6} spacing={5} align="start" mt={10}>
-            {sidebarLinks.map((item) => (
-              <Link
-                key={item.path}
-                as={RouterLink}
-                to={item.path}
-                onClick={onClose}
-                fontSize="lg"
-                display="flex"
-                alignItems="center"
-                gap={3}
-              >
-                {item.icon}
-                {item.label}
-              </Link>
-            ))}
-          </VStack>
-        </DrawerContent>
-      </Drawer>
-
-      {/* Main Content */}
-      <Box as="main" flex="1" p={4}>
-        <Outlet />
+    <MotionBox
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      p={{ base: 4, md: 6 }}
+      bg={bg}
+      borderRadius="md"
+      boxShadow="md"
+      mt={6}
+    >
+      {/* Top CTAs */}
+      <Box mb={6}>
+        <Button colorScheme="blue" mr={4}>
+          Donate
+        </Button>
+        <Button variant="outline" borderColor="brand.blue.500" color="brand.blue.500">
+          Contact
+        </Button>
       </Box>
 
-      {/* Mobile Footer - only visible on small screens */}
-      <MobileFooter />
-    </Flex>
+      <Heading size="lg" mb={4} color={heading}>
+        Peace Tournament 2025
+      </Heading>
+
+      <Text mb={4} fontSize={{ base: "sm", md: "md" }} color={text}>
+        The Peace Tournament Project hosts our 3rd edition of the Peace Tournament in Nakivale Refugee Camp, Uganda. It begins 20th May to 20th June 2025. Donations are welcomed in all forms.
+      </Text>
+
+      <Text mb={4} fontSize={{ base: "sm", md: "md" }} color={text}>
+        The Nakivale Community believes that our football, art, and music tournaments align with our mission of promoting solidarity through community service. The youth tournaments unify diverse cultures, languages, and challenges into harmony.
+      </Text>
+
+      <Heading size="md" mt={8} mb={2} color={heading}>
+        Objectives
+      </Heading>
+      <Text mb={4} fontSize={{ base: "sm", md: "md" }} color={text}>
+        The tournament offers a platform to showcase talents and foster integration and peace within the international refugee community.
+      </Text>
+      <UnorderedList spacing={2} mb={4} fontSize={{ base: "sm", md: "md" }} color={text}>
+        <ListItem>Forge bonds and break down barriers</ListItem>
+        <ListItem>Create a sense of solidarity</ListItem>
+        <ListItem>Host 16 football teams and 8 art/music groups</ListItem>
+        <ListItem>Award honors that celebrate unity</ListItem>
+      </UnorderedList>
+
+      <Heading size="md" mt={8} mb={2} color={heading}>
+        Importance
+      </Heading>
+      <Text mb={4} fontSize={{ base: "sm", md: "md" }} color={text}>
+        Beyond sports, this initiative provides physical activity, peace education, and promotes inclusive community games.
+      </Text>
+
+      <Heading size="md" mt={8} mb={2} color={heading}>
+        Impact
+      </Heading>
+      <Text mb={4} fontSize={{ base: "sm", md: "md" }} color={text}>
+        Children build peaceful relationships and grow into community-minded leaders. It fosters hope and resilience.
+      </Text>
+
+      <Heading size="md" mt={8} mb={2} color={heading}>
+        Conclusion
+      </Heading>
+      <Text mb={4} fontSize={{ base: "sm", md: "md" }} color={text}>
+        The Peace Tournament is a celebration of resilience, potential, and peace. Supporting it helps shape futures rooted in unity.
+      </Text>
+
+      <Text fontWeight="bold" mb={6} fontSize={{ base: "sm", md: "md" }} color={text}>
+        Thank you for supporting The Alliance for Peace & Solidarity for Africa and the Nakivale Refugee Settlement.
+      </Text>
+
+      {/* Bottom CTAs */}
+      <Stack direction={{ base: "column", sm: "row" }} spacing={4}>
+        <Button variant="outline" borderColor="brand.gold.500" color="brand.gold.500">
+          Contact
+        </Button>
+        <Button colorScheme="blue">
+          Donate
+        </Button>
+      </Stack>
+    </MotionBox>
   );
 }

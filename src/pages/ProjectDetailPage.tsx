@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router-dom";
 import {
   Box,
@@ -10,54 +9,62 @@ import {
   AlertIcon
 } from "@chakra-ui/react";
 import { projects } from "../data/projects";
+import PeaceTournamentDetail from "../components/projectDetails/PeaceTournamentDetail";
+
 
 export default function ProjectDetailPage() {
-  const { slug } = useParams();
-  const project = projects.find(p => p.slug === slug);
+  const { projectId } = useParams(); // match route param name
+  const project = projects.find(p => p.slug === projectId); // use projectId here
 
   if (!project) {
     return (
-      <Alert status="error">
+      <Alert status="error" mt={8}>
         <AlertIcon />
-        Project not found.
+        Project not found. Please return to the portal and try again.
       </Alert>
     );
   }
 
   return (
-    <Box p={8}>
-      <Heading mb={4}>{project.title}</Heading>
-      <Text fontSize="lg" mb={6}>{project.description}</Text>
+    <Box p={{ base: 4, md: 8 }} maxW="7xl" mx="auto">
+  <Heading mb={4}>{project.title}</Heading>
+  {project.slug === "peace-tournament-2025" ? (
+  <PeaceTournamentDetail />
+) : (
+  <Text fontSize="lg" mb={6}>{project.fullDescription}</Text>
+)}
 
+  {project.images && project.images.length > 0 && (
+    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} mt={6}>
+  {project.snippets?.map((snippet) => (
+    <Box
+      key={snippet.id}
+      borderWidth="1px"
+      borderRadius="md"
+      overflow="hidden"
+      boxShadow="md"
+      transition="all 0.2s"
+      _hover={{ boxShadow: "xl", transform: "scale(1.02)" }}
+    >
       <Image
-        src={project.image}
-        alt={project.title}
-        borderRadius="md"
-        mb={6}
-        maxH="400px"
+        src={snippet.thumbnail}
+        alt={snippet.title}
         objectFit="cover"
+        height="180px"
+        width="100%"
       />
+      <Box p={4}>
+        <Heading size="sm" mb={2}>{snippet.title}</Heading>
+        <Text fontSize="sm" color="gray.600">
+          {snippet.description && snippet.description}
+        </Text>
+      </Box>
+    </Box>
+  ))}
+</SimpleGrid>
 
-      {project.snippets && project.snippets.length > 0 && (
-        <Box mt={10}>
-          <Heading size="md" mb={4}>Related Snippets</Heading>
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-            {project.snippets.map(snippet => (
-              <Box key={snippet.id} bg="gray.50" p={4} borderRadius="md">
-                <Heading size="sm" mb={2}>{snippet.title}</Heading>
-                <Box as="iframe"
-                  src={snippet.videoUrl}
-                  width="100%"
-                  height="200"
-                  allowFullScreen
-                  title={snippet.title}
-                  style={{ borderRadius: "8px" }}
-                />
-              </Box>
-            ))}
-          </SimpleGrid>
-        </Box>
-      )}
+  )}
+
     </Box>
   );
 }
