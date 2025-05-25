@@ -5,7 +5,6 @@ import {
   Heading,
   Text,
   Image,
-  VStack,
   SimpleGrid,
   Alert,
   AlertIcon

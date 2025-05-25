@@ -1,50 +1,61 @@
+// src/data/projects.ts
 
-export interface Snippet {
+export type Snippet = {
   id: string;
   title: string;
   videoUrl: string;
-  thumbnail?: string;
-  relatedProjectSlug?: string;
-}
+};
 
-export interface Project {
+export type Project = {
   slug: string;
   title: string;
   description: string;
   image: string;
   category: "recent" | "past" | "future";
-  snippets?: Snippet[];
-}
+  snippets?: Snippet[]; // Optional snippets
+};
 
 export const projects: Project[] = [
   {
-    slug: "peace-tournament-2025",
-    title: "Peace Tournament 2025",
-    description: "A youth-led soccer initiative to bridge communities through sport and dialogue.",
-    image: "/images/peace-tournament.jpg",
+    slug: "healing-circles",
+    title: "Healing Circles",
+    description: "Community healing sessions with music, dialogue, and support.",
+    image: "/images/healing.jpg",
     category: "recent",
     snippets: [
       {
-        id: "snippet-1",
-        title: "Opening Ceremony Highlights",
-        videoUrl: "https://youtube.com/embed/abc123",
-        thumbnail: "/images/snippet-thumb1.jpg",
-        relatedProjectSlug: "peace-tournament-2025"
-      }
-    ]
+        id: "snippet-healing-1",
+        title: "Circle Voices",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      },
+    ],
   },
   {
-    slug: "creative-literacy-summit",
-    title: "Creative Literacy Summit",
-    description: "Workshops and performances to promote storytelling and education.",
-    image: "/images/literacy-summit.jpg",
-    category: "past"
+    slug: "future-builders",
+    title: "Future Builders",
+    description: "Workshops and creative labs for young changemakers.",
+    image: "/images/future.jpg",
+    category: "recent",
+    snippets: [
+      {
+        id: "snippet-future-1",
+        title: "Youth Lab Recap",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      },
+    ],
   },
   {
-    slug: "solar-village-initiative",
-    title: "Solar Village Initiative",
-    description: "An upcoming green energy project bringing sustainable light to rural communities.",
-    image: "/images/solar-village.jpg",
-    category: "future"
-  }
+    slug: "peace-portraits",
+    title: "Peace Portraits",
+    description: "Capturing local peacebuilders through interviews and art.",
+    image: "/images/peace.jpg",
+    category: "recent",
+  },
+  {
+    slug: "story-gatherers",
+    title: "Story Gatherers",
+    description: "Oral history initiative to record African peace practices.",
+    image: "/images/story.jpg",
+    category: "recent",
+  },
 ];
