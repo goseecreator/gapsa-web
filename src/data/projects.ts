@@ -40,15 +40,5 @@ export const projects: Project[] = [
       "https://via.placeholder.com/800x400?text=Tournament+Photo+2",
       "https://via.placeholder.com/800x400?text=Tournament+Photo+3"
     ],
-    snippets: [
-      {
-        id: "peace-tournament-1",
-        title: "Opening Ceremony",
-        videoUrl: "https://example.com/video1.mp4",
-        thumbnail: "https://via.placeholder.com/200x100?text=Thumbnail+1",
-        relatedProjectSlug: "peace-tournament-2025",
-        description: "The official opening ceremony featuring music, dance, and a message of unity."
-      }
-    ]
   }
 ];

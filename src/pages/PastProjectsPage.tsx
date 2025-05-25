@@ -34,7 +34,7 @@ export default function ProjectDetailPage() {
 
       {/* Project Image Gallery */}
       <Stack direction={{ base: "column", md: "row" }} spacing={4} wrap="wrap" mb={10}>
-        {project.images.map((img, index) => (
+        {project.images && project.images.map((img, index) => (
           <Image
             key={index}
             src={img}
