@@ -11,7 +11,6 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import MobileFooter from "../components/MobileFooter";
-import { useBreakpointValue } from "@chakra-ui/react";
 
 
 const MotionBox = motion(Box);
