@@ -28,7 +28,6 @@ const sidebarLinks = [
   { label: "Home", path: "/", icon: <FaHome /> },
   { label: "About", path: "/about", icon: <FaInfoCircle /> },
   { label: "Portal", path: "/portal", icon: <MdDashboardCustomize /> },
-  { label: "Snippets", path: "/snippets", icon: <BsCollectionPlay /> },
   { label: "Contact", path: "/contact", icon: <FaEnvelope /> },
   { label: "Donate", path: "/donate", icon: <FaHeart /> },
 ];

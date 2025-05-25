@@ -1,5 +1,4 @@
 // Update the path or create the missing file
-import PeaceTournamentDetail from "../components/projectDetails/PeaceTournamentDetail.tsx";
 
 // If the file does not exist, create it at the specified path or update the import path to the correct location.
 import type { ReactElement } from "react";
@@ -33,7 +32,7 @@ export const projects: Project[] = [
     title: "Peace Tournament 2025",
     shortDescription: "A youth-led soccer initiative to bridge communities through sport and dialogue.",
     fullDescription: "peace-tournament-2025", // or null
-    image: "https://via.placeholder.com/400x200?text=Peace+Tournament",
+    image: "https://gapsafrica-uganda.s3.us-east-1.amazonaws.com/images/gallery/gapsaContent/peaceTournament/peaceTour2025/marketing.jpeg",
     category: "recent",
     images: [
       "public/images/peaceTour2025/ football8.jpeg",
