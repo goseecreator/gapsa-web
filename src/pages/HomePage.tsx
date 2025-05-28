@@ -123,7 +123,7 @@ import { Link as RouterLink } from "react-router-dom";
     }
   }}
 >
-  <ChakraLink as={RouterLink} to="/donate" _hover={{ textDecoration: "none" }}>
+  <ChakraLink as={RouterLink} to="/PeaceTournamentDetail" _hover={{ textDecoration: "none" }}>
     <Button
       size="lg"
       colorScheme="yellow"

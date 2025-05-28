@@ -16,6 +16,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@hookform/resolvers": "^5.0.1",
+    "@paypal/react-paypal-js": "^8.8.3",
     "framer-motion": "^6.5.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

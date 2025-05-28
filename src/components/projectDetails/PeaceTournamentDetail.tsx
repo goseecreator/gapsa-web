@@ -68,7 +68,6 @@ const galleryByDay = [
       "https://gapsafrica-uganda.s3.us-east-1.amazonaws.com/images/gallery/gapsaContent/peaceTournament/peaceTour2025/day2/peace74.jpg",
       "https://gapsafrica-uganda.s3.us-east-1.amazonaws.com/images/gallery/gapsaContent/peaceTournament/peaceTour2025/day2/peaceday.jpg",
       "https://gapsafrica-uganda.s3.us-east-1.amazonaws.com/images/gallery/gapsaContent/peaceTournament/peaceTour2025/day2/peaceday2.jpg",
-      "https://gapsafrica-uganda.s3.us-east-1.amazonaws.com/images/gallery/gapsaContent/peaceTournament/peaceTour2025/day2/peacedayforever.jpg",
       "https://gapsafrica-uganda.s3.us-east-1.amazonaws.com/images/gallery/gapsaContent/peaceTournament/peaceTour2025/day2/peacetourday2.jpeg",
 
     ],

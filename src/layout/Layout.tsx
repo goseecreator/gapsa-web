@@ -1,7 +1,7 @@
 
 import {
-  Box,
-  Flex,
+Box,
+Flex,
   VStack,
   IconButton,
   useDisclosure,
@@ -20,7 +20,6 @@ import {
   FaHeart,
 } from "react-icons/fa";
 import { MdDashboardCustomize } from "react-icons/md";
-import { BsCollectionPlay } from "react-icons/bs";
 import { Outlet, Link as RouterLink } from "react-router-dom";
 import MobileFooter from "../components/MobileFooter";
 
